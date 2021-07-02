@@ -9,8 +9,7 @@
     <ProjectGuid>{c7a636f6-0869-4084-a800-a969f20b8608}</ProjectGuid>
     <DSP>Microsoft.Data.Tools.Schema.Sql.Sql130DatabaseSchemaProvider</DSP>
     <OutputType>Database</OutputType>
-    <RootPath>
-    </RootPath>
+    <RootPath />
     <RootNamespace>TRMData</RootNamespace>
     <AssemblyName>TRMData</AssemblyName>
     <ModelCollation>1033, CI</ModelCollation>
@@ -48,7 +47,6 @@
   </PropertyGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
-    <!-- Default to the v11.0 targets path if the targets file for the current VS version is not found -->
     <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
     <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
   </PropertyGroup>
@@ -64,5 +62,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="PublishLocations\TRMData.publish.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="dbo\Tables\Sale.sql" />
+    <Build Include="dbo\Tables\SaleDetail.sql" />
+    <Build Include="dbo\Tables\Product.sql" />
+    <Build Include="dbo\Tables\Inventory.sql" />
+    <Build Include="dbo\Tables\User.sql" />
   </ItemGroup>
 </Project>

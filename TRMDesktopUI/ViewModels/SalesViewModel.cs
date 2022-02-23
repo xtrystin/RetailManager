@@ -172,7 +172,7 @@ namespace TRMDesktopUI.ViewModels
         private decimal CalculateTax()
         {
             decimal taxAmount = 0;
-            decimal taxRate = _configHelper.GetTaxRate()/100;
+            decimal taxRate = _configHelper.GetTaxRate();
 
             taxAmount = Cart
                 .Where(item => item.Product.IsTaxable)

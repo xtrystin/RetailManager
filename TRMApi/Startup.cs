@@ -38,7 +38,7 @@ namespace TRMApi
                 policy.AddPolicy("OpenCorsPolicy", opt =>
                     opt.AllowAnyOrigin()
                     .AllowAnyHeader()
-                    .AllowAnyMethod())
+                    .AllowAnyMethod());
             });
 
             services.AddDbContext<ApplicationDbContext>(options =>

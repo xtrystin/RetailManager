@@ -1,6 +1,4 @@
-﻿@using Portal.Authentication
-@using Portal.Models
-@inject IAuthenticationService AuthService
+﻿@inject IAuthenticationService AuthService
 @inject NavigationManager NavManager
 
 <EditForm Model="model" OnValidSubmit="ExecuteLogin" class="">
@@ -19,6 +17,10 @@
         <div class="col-auto">
             <button type="submit" class="btn alert-success">Log In</button>
         </div>
+
+        <div class="col-auto">
+            <button type="button" class="btn alert-primary" @onclick="RegisterUser">Register</button>
+        </div>
     </div>
 </EditForm>
 
@@ -27,6 +29,11 @@
 
     private bool showAuthenticationError = false;
     private string authenticationErrorText = "";
+
+    private void RegisterUser()
+    {
+        NavManager.NavigateTo("/register");
+    }
 
     private async Task ExecuteLogin()
     {

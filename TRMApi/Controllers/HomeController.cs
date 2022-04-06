@@ -12,15 +12,12 @@ namespace TRMApi.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly UserManager<IdentityUser> _userManager;
 
-        public HomeController(ILogger<HomeController> logger, 
-            RoleManager<IdentityRole> roleManager,
+        public HomeController(RoleManager<IdentityRole> roleManager,
             UserManager<IdentityUser> userManager)
         {
-            _logger = logger;
             _roleManager = roleManager;
             _userManager = userManager;
         }
@@ -32,26 +29,26 @@ namespace TRMApi.Controllers
 
         public async Task<IActionResult> Privacy()
         {
-            // Execute only once
-            //string[] roles = { "Admin", "Manager", "Cashier" };
+            //Execute only once
+            string[] roles = { "Admin", "Manager", "Cashier" };
 
-            //foreach (var role in roles)
-            //{
-            //    var roleExist = await _roleManager.RoleExistsAsync(role);
+            foreach (var role in roles)
+            {
+                var roleExist = await _roleManager.RoleExistsAsync(role);
 
-            //    if (roleExist == false)
-            //    {
-            //        await _roleManager.CreateAsync(new IdentityRole(role));
-            //    }
-            //}
+                if (roleExist == false)
+                {
+                    await _roleManager.CreateAsync(new IdentityRole(role));
+                }
+            }
 
-            //var user = await _userManager.FindByEmailAsync("test@mail.com");
+            var user = await _userManager.FindByEmailAsync("test@mail.com");
 
-            //if(user != null)
-            //{
-            //    await _userManager.AddToRoleAsync(user, "Admin");
-            //    await _userManager.AddToRoleAsync(user, "Cashier");
-            //}
+            if (user != null)
+            {
+                await _userManager.AddToRoleAsync(user, "Admin");
+                await _userManager.AddToRoleAsync(user, "Cashier");
+            }
 
             return View();
         }

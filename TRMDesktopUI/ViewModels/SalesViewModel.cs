@@ -17,10 +17,10 @@ namespace TRMDesktopUI.ViewModels
 {
     public class SalesViewModel : Screen
     {
-        private IProductEndpoint _productEndpoint;
-        ISaleEndpoint _saleEndpoint;
-        IConfigHelper _configHelper;
-        IMapper _mapper;
+        private readonly IProductEndpoint _productEndpoint;
+        private readonly ISaleEndpoint _saleEndpoint;
+        private readonly IConfigHelper _configHelper;
+        private readonly IMapper _mapper;
         private readonly StatusInfoViewModel _status;
         private readonly IWindowManager _window;
 
@@ -60,7 +60,7 @@ namespace TRMDesktopUI.ViewModels
                     await _window.ShowDialogAsync(_status, null, settings);
                 }
 
-                TryCloseAsync();
+                await TryCloseAsync();
             }
         }
 
